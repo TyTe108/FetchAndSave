@@ -4,6 +4,7 @@ package com.example.datacollection.fetch_and_save;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
@@ -36,5 +37,11 @@ public class PostController {
     @GetMapping("/posts")
     public List<Post> getAllPosts() {
         return (List<Post>) postRepository.findAll();
+    }
+
+    @DeleteMapping("/delete-posts")
+    public String deleteAllPosts() {
+        postRepository.deleteAll();
+        return "All posts deleted successfully!";
     }
 }
