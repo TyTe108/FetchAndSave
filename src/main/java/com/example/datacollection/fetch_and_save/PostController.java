@@ -15,6 +15,11 @@ public class PostController {
     @Autowired
     private PostRepository postRepository;
 
+    @GetMapping("/")
+    public String home() {
+        return "Application is running!";
+    }
+
     @GetMapping("/fetch-posts")
     public String fetchPosts() {
         RestTemplate restTemplate = new RestTemplate();
